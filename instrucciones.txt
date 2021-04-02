@@ -1,0 +1,4 @@
+mover
+girarCamara
+GirarRueda
+Foto
