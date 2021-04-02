@@ -90,7 +90,10 @@ if (Estado== q1){
     int TamanioArreglo= sizeof palabrasReservadas / sizeof palabrasReservadas[0];
     for (j=0;j<TamanioArreglo;j++){
         if (texto.compare(palabrasReservadas[j])==0){
-            cout<< texto << " es un comando valido"<< endl;
+            ofstream imp("Instrucciones aceptadas.txt");//crea un archivo de texto con las palabras reservadas
+			system ("cls");
+            cout<< texto << " es un comando valido"<< endl;// imprime en pantalla
+            imp<<"Robert " <<texto<<endl;// imprime en el texto
             break;
         }
     }
