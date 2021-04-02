@@ -1,4 +1,3 @@
-mover
-girarCamara
-GirarRueda
+haga
+girarRuedas
 Foto
