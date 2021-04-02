@@ -92,11 +92,11 @@ if (Estado== q1){
         if (texto.compare(palabrasReservadas[j])==0){
             cout<< texto << " es un comando valido"<< endl;
             break;
-        }else{
+        }
+    }
+}else{
         cout<<texto<< " No es un comando valido"<< endl;
         break;
-    }
-    }
 }
     }
 

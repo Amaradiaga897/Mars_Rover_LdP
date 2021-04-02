@@ -1,3 +1,7 @@
-haga
+mover
+hola
+girarBrazo
 girarRuedas
-Foto
+avanza
+retrocede
+tomarFoto
