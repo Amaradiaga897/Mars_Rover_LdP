@@ -1,0 +1,7 @@
+rotaBrazo 30
+BIEN 34
+girarRuedas 25
+extiendeBrazo 34.58
+rotaBrazo 25.6
+mal
+rotar 87b
