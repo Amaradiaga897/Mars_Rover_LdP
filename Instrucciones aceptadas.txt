@@ -1,0 +1,10 @@
+El Rover girara sus ruedas delanteras -70 grados
+El Rover girara sus ruedas delanteras 52.3 grados
+El Rover no pudo completar la accion ya que el parametro ingresado estaba fuera de limites
+El Rover girara su brazo extendible 200.6 grados
+El Rover no pudo completar la accion ya que el parametro ingresado estaba fuera de limites
+El Rover extendera su brazo 50 centimetros
+El Rover no pudo completar la accion ya que el parametro ingresado estaba fuera de limites
+El Rover inclinara su camara -35 grados
+El Rover avanzara 638 metros
+El Rover girara sus ruedas delanteras -60 grados

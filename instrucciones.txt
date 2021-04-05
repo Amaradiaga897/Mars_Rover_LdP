@@ -1,7 +1,10 @@
-mover
-hola
-girarBrazo
-girarRuedas
-avanza
-retrocede
-tomarFoto
+girarRuedas -70
+girarRuedas 52.3
+girarRuedas 80
+girarBrazo 200.6
+girarBrazo 361
+extiendeBrazo 50
+extiendeBrazo 159
+inclinaCamara -35
+mover 638
+girarRuedas -60
