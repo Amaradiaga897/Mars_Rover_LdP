@@ -1,4 +1,3 @@
-//hola
 #include<iostream>
 #include<stdlib.h>
 #include<string.h>
@@ -7,15 +6,27 @@
 using namespace std;
 
 void lectura();
+bool comparaCadena(string palabra1, string palabra2);
 
 int main(){
+	
 
     lectura();
 
     system("pause");
     return 0;
 }
-
+//funcion propia para comparar dos strings
+bool comparaCadena(string palabra1, string palabra2){
+	
+	for(int i=0;i<sizeof palabra1;i++){
+		if((sizeof palabra1!=sizeof palabra2) ||  palabra1[i]!=palabra2[i]){
+			return false;
+		}
+	}	
+	return true;
+}
+//funcion que recorre cada linea leida 
 void lectura(){
 	ofstream imp("Instrucciones aceptadas.txt");//crea un archivo de texto con las palabras reservadas	
     ifstream archivo;
@@ -37,7 +48,7 @@ void lectura(){
     
 
     
-	// mientras no sea la ultima linea
+	// ciclo que recorre cada linea
     while (!archivo.eof()){
     	//inicializa variables
     	linea +=1;
@@ -45,13 +56,10 @@ void lectura(){
 	    Estado= q0;
 	    comando = "";
 	    parametro = "";
+	    // asigna a texto la linea actual de instrucciones.txt
 	    getline(archivo,texto);
 	    longitud=texto.size();
-	    
-	    // asigna a texto la linea actual de instrucciones.txt
-	    
-	    
-		// ciclo que recorrecada caracter de  la linea seleccionada del texto
+		// ciclo que recorre cada caracter de  la linea seleccionada del texto
 	    while (longitud>i and Estado!=qe){
 	    	
 	        Simbolo= texto[i];
@@ -85,7 +93,6 @@ void lectura(){
 	        case q2:
 	            if (Simbolo>='0' && Simbolo<='9' || Simbolo=='+' && Simbolo=='-'){
 	            	parametro += texto[i];
-	            	//cout<< "si paso 3-----";
 	                Estado=q3;
 	            }else{
 	                Estado = qe;
@@ -97,7 +104,6 @@ void lectura(){
 				}
 	            if (Simbolo>='0' && Simbolo<='9'){
 	            	parametro += texto[i];
-	            		//cout<<i+1<<longitud;
 	            }else{
 	            	if(Simbolo == '.' ){
 	                Estado = q4;
@@ -107,7 +113,6 @@ void lectura(){
 						Estado = qe;
 					}
 	            }
-	            
 	            break;
 	        case q4:
 	        	Estado = q5;
@@ -118,7 +123,6 @@ void lectura(){
 	            
 						Estado = qe;
 					}
-				//cout<< "si paso 5-----";
 	            break;
 	        case q5:
 	            if (Simbolo>='0' && Simbolo<='9'){
@@ -135,20 +139,15 @@ void lectura(){
 	            break;    
 	        }
 	        i++;
-	    }
-		
+	    }	
 		if (Estado == q5){
 		    int j;
 		    /* calcula el tamanio 
 			del arreglo en bites y lo divide entre el tamanio en bytes del elemento 0 */
 		    int tamanioArreglo= sizeof palabrasReservadas/sizeof palabrasReservadas[0];
-		    
-		    //cout<<comando<<Estado;
 		    for (j=0;j<tamanioArreglo;j++){
 		    	
-		    		
-		    	if(palabrasReservadas[j].compare(comando)==0){
-		    		
+		    	if(comparaCadena(comando,palabrasReservadas[j])==1){
 		    		cout<<"linea:" <<linea<<" "<<  comando<<" "<< parametro<<endl;// imprime en pantalla
 		            imp<<"Robert " <<comando<<" "<<parametro<<endl;// imprime en el texto
 		            break;
