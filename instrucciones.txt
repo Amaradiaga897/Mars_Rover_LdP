@@ -1,4 +1,4 @@
-girarRuedas -70
+girarRuedas -1
 girarRuedas 52.3
 girarRuedas 80
 girarBrazo 200.6
@@ -8,3 +8,7 @@ extiendeBrazo 159
 inclinaCamara -35
 mover 638
 girarRuedas -60
+tomarFoto
+mover -6
+mover 1
+inclinaCamara

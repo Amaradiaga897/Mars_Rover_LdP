@@ -1,4 +1,3 @@
-//hola
 #include<iostream>
 #include<stdlib.h>
 #include<string.h>
@@ -19,9 +18,9 @@ int main(){
 void lectura(){
 	ofstream imp("Instrucciones aceptadas.txt");//crea un archivo de texto con las palabras reservadas
     ifstream archivo;
-    archivo.open("instrucciones.txt", ios::in); //Abre el archivo de texto
+    archivo.open("instrucciones.txt", ios::in); //Abre el archivo de texto con las instrucciones del usuario
     if (archivo.fail()){
-        cout<< "Archivo de texto no encontrado";
+        cout<< "Archivo de texto no encontrado"; // Error en caso de no encontrarse el archivo de texto
         exit(1);
     }
     string texto;
@@ -37,7 +36,7 @@ void lectura(){
 
 
 
-	// mientras no sea la ultima linea
+	// mientras no sea el final del archivo de texto
     while (!archivo.eof()){
     	//inicializa variables
     	linea +=1;
@@ -49,7 +48,6 @@ void lectura(){
 	    longitud=texto.size();
 
 	    // asigna a texto la linea actual de instrucciones.txt
-
 
 		// ciclo que recorrecada caracter de  la linea seleccionada del texto
 	    while (longitud>i and Estado!=qe){
@@ -137,7 +135,7 @@ void lectura(){
 	        i++;
 	    }
 
-		if (Estado == q5){
+		if (Estado == q5 || Estado == q3 || Estado == q1 && comando=="tomarFoto"){
 		    int j;
 		    /* calcula el tamanio
 			del arreglo en bites y lo divide entre el tamanio en bytes del elemento 0 */
@@ -152,30 +150,36 @@ void lectura(){
 		    		cout<<"linea:" <<linea<<" "<<  comando<<" "<< parametro<<endl;// imprime en pantalla
 
 
-		            if (comando=="girarRuedas" && std::stof(parametro)>= -70 && std::stof(parametro)<=70){
-                        imp<<"El Rover girara sus ruedas delanteras "<<parametro<< " grados"<<endl;// imprime en el texto
-		            }else if (comando=="girarBrazo" && std::stof(parametro)>= 0 && std::stof(parametro)<=360){
+		            if (comando=="girarRuedas" && std::stof(parametro)>= -70 && std::stof(parametro)<=70){ //Aqui se manda a imprimir las instucciones aceptadas al archivo de texto creado
+                        imp<<"El Rover girara sus ruedas delanteras "<<parametro<< " grados"<<endl;
+		            }
+		            else if (comando=="girarBrazo" && std::stof(parametro)>= 0 && std::stof(parametro)<=360){
                         imp<<"El Rover girara su brazo extendible "<<parametro<< " grados"<<endl;
-		            }else if (comando=="mover"){
+		            }
+		            else if (comando=="mover" && std::stof(parametro)!= 0){
                         imp<<"El Rover avanzara "<<parametro<< " metros"<<endl;
-		            }else if (comando=="extiendeBrazo"&& std::stof(parametro)>= 0 && std::stof(parametro)<=100){
+		            }
+		            else if (comando=="extiendeBrazo"&& std::stof(parametro)>= 0 && std::stof(parametro)<=100){
                         imp<<"El Rover extendera su brazo "<<parametro<< " centimetros"<<endl;
-		            }else if (comando=="inclinaCamara"&& std::stof(parametro)>= -45 && std::stof(parametro)<=45){
+		            }
+		            else if (comando=="inclinaCamara"&& std::stof(parametro)>= -45 && std::stof(parametro)<=45){
                         imp<<"El Rover inclinara su camara "<<parametro<< " grados"<<endl;
-		            }else if (comando=="tomarFoto"){
+		            }
+		            else if (comando=="tomarFoto"){
                         imp<<"El Rover tomara una foto"<<endl;
-		            }else{
-                        imp<<"El Rover no pudo completar la accion ya que el parametro ingresado estaba fuera de limites"<<endl;
+		            }
+		            else{
+                        imp<<"El Rover no pudo completar la accion "<< "("<<comando<<")"<< " ya que el parametro ingresado "<< "("<<parametro<<")"<< " estaba fuera de limites"<<endl;
 		            }
 		            break;
 				}else{
 					if(j+1==tamanioArreglo){
-					cout<<"linea:" <<linea<<" "<<" Error de sintaxis  en la linea "<< endl;
+					cout<<"linea:" <<linea<<" Error de sintaxis en la linea."<< endl;
 					}
 				}
 			}
 		}else{
-		    cout<<"linea:" <<linea<<" "<<" Error de sintaxis  en la linea "<< endl;
+		    cout<<"linea:" <<linea<<" Error de sintaxis en la linea "<< endl;
 		}
 	}
 	archivo.close();
